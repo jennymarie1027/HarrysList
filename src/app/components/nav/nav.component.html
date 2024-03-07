@@ -1,0 +1,20 @@
+<mat-toolbar color="primary">
+  <span class="navlink" routerLink="/">Angular Craigslist </span>
+  <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button> -->
+  <div>
+    <button mat-button routerLink="/posts" routerLinkActive="active">Posts</button>
+    <button mat-button routerLink="/add-post" routerLinkActive="active" *ngIf="signedin">Create Post</button>
+    <button mat-button routerLink="/messages" routerLinkActive="active" *ngIf="signedin">Message Center</button>
+    <button mat-button routerLink="/myposts" routerLinkActive="active" *ngIf="signedin">My Posts</button>
+    <button mat-button routerLink="/logout" routerLinkActive="active" [routerLinkActiveOptions]="{ exact : true }" *ngIf="signedin" >Logout</button>
+    <button mat-button routerLink="/signup" routerLinkActive="active" *ngIf="!signedin" >Signup</button>
+    <button mat-button routerLink="/login" routerLinkActive="active" *ngIf="!signedin" >Login</button>
+  </div>
+</mat-toolbar>
+
+
+
+
+

@@ -1,0 +1,17 @@
+<mat-card class="m-6 p-6" *ngIf="post">
+  <div>
+    <!-- <img class="mb-1 mx-auto h-[100px]" [src]="post.image" alt=""> -->
+    <div>
+      <h5>{{ post.category }}</h5>
+      <p>{{ post.title }}</p>
+      <p>{{ post.description}}</p>
+    </div>
+    <div>
+      <span>{{ post.price }}</span>
+    </div>
+  </div>
+</mat-card>
+<div *ngIf="isOwner()">
+  <button mat-raised-button color="warn" (click)="onDeletePost(post._id)">Delete</button>
+  <button mat-raised-button color="secondary" (click)="navToPostEdit(post._id)">Edit</button>
+</div>

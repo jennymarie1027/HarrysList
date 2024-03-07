@@ -1,0 +1,12 @@
+.active{ 
+  background: grey
+}
+
+.navlink {
+  padding: .4em;
+}
+.navlink:hover {
+  cursor: pointer;
+  color: #757ce8;
+  border-radius: .6em;
+}

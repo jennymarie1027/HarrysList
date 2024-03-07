@@ -1,0 +1,19 @@
+<form class="container" [formGroup]="loginForm" (ngSubmit)="createUser()">
+  <mat-form-field>
+    <mat-label>Username</mat-label>
+    <input matInput placeholder="example" formControlName="username">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput placeholder="example@example.com" formControlName="email">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input matInput placeholder="********" formControlName="password">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Confirm Password</mat-label>
+    <input matInput placeholder="********" formControlName="passwordConfirmation">
+  </mat-form-field>
+  <button mat-raised-button color="primary">Create User</button>
+</form>
