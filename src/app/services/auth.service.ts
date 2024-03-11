@@ -10,7 +10,7 @@ import { SignupCredentials } from 'src/models/SignupCreds';
   providedIn: 'root',
 })
 export class AuthService {
-  API_URL = 'http://localhost:8080';
+  API_URL = 'http://localhost:8081';
   signedin$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor(private http: HttpClient) {}
