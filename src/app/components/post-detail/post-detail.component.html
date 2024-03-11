@@ -3,13 +3,16 @@
     <div>
       <!-- <img class="mb-1 mx-auto h-[100px]" [src]="post.image" alt=""> -->
       <div>
-        <h5>{{ post.category }}</h5>
-        <p>Title: {{ post.title }}</p>
-        <p>d=Description: {{ post.description}}</p>
+        <h3>Title: {{ post.title }}</h3>
+        <h5>Category: {{ post.category }}</h5>
+        <h4>Description: {{ post.description}}</h4>
       </div>
       <div>
-        <span>{{ post.price }}</span>
+        <span>Price: {{ post.price | currency}}</span>
       </div>
+    </div>
+    <div>
+      <img class="max-w-40" [src]=post.image alt="">
     </div>
   </mat-card>
   <button mat-raised-button color="primary" class="mx-6" routerLink="/posts">Return to Posts</button>
