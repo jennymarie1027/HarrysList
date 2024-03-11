@@ -8,11 +8,17 @@
         <h4>Description: {{ post.description}}</h4>
       </div>
       <div>
-        <span>Price: {{ post.price | currency}}</span>
+        <span>Price: {{ post.price ? post.price : 'No price listed'}}</span>
       </div>
     </div>
     <div>
-      <img class="max-w-40" [src]=post.image alt="">
+
+      <div *ngIf="post.image;else placeholder">
+        <img class="mb-1 mx-auto h-[100px]" [src]="post.image" alt="">
+      </div>
+      <ng-template #placeholder>
+        <mat-icon fontIcon="image"></mat-icon>
+      </ng-template>
     </div>
   </mat-card>
   <button mat-raised-button color="primary" class="mx-6" routerLink="/posts">Return to Posts</button>

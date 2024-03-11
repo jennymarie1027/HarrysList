@@ -1,6 +1,11 @@
   <div id="cardContainer">
     <div>
-      <img class="mb-1 mx-auto h-[100px]" [src]=post.image alt="">
+      <div *ngIf="post.image;else placeholder">
+        <img class="mb-1 mx-auto h-[100px]" [src]="post.image" alt="">
+      </div>
+      <ng-template #placeholder>
+        <mat-icon fontIcon="image"></mat-icon>
+      </ng-template>
       <div>
         <h2>{{ post.title }}</h2>
         <p>Description: {{ post.description}}</p>
