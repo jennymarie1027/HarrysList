@@ -35,6 +35,7 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { MyPostsComponent } from './components/my-posts/my-posts.component';
 import { PostComponent } from './components/post/post.component';
 import { PostEditComponent } from './components/post-edit/post-edit.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -72,13 +73,14 @@ import { PostEditComponent } from './components/post-edit/post-edit.component';
     MatTableModule,
     MatBadgeModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
-    }
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })

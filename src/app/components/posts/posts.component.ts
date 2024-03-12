@@ -18,9 +18,9 @@ export class PostsComponent {
     private router: Router,
   ) {}
 
-  ngOnInit() {
-    this.getPosts();
-  }
+  // ngOnInit() {
+  //   this.getPosts();
+  // }
 
   getPosts() {
     this.postService.getAllPosts().subscribe((posts) => {
