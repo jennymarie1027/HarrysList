@@ -10,17 +10,14 @@ import { Observable } from 'rxjs';
   styleUrls: ['./posts.component.css'],
 })
 export class PostsComponent {
-  posts: Post[]
-  noPostMessage
+  posts: Post[];
+  noPostMessage;
 
-  constructor(
-    private postService: PostService,
-    private router: Router,
-  ) {}
+  constructor(private postService: PostService, private router: Router) {}
 
-  // ngOnInit() {
-  //   this.getPosts();
-  // }
+  ngOnInit() {
+    this.getPosts();
+  }
 
   getPosts() {
     this.postService.getAllPosts().subscribe((posts) => {
