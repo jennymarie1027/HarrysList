@@ -39,4 +39,12 @@ export class PostService {
   editPost(id, values) {
     return this.http.put(`${this.API_URL}/post/${id}`, values);
   }
+
+  addImage(values) {
+    return this.http.post(`${this.API_URL}/images`, values);
+  }
+
+  getImages() {
+    return this.http.get(`${this.API_URL}/images`)
+  }
 }
