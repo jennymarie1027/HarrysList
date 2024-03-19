@@ -27,9 +27,16 @@
   <div *ngIf="checkControlForError('description')">
     <p class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">Description is required</p>
   </div>
-  <mat-form-field>
+  <div>
+    <mat-label>Image</mat-label>
+    <input type="file" id="image" name="image" (change)="onFileSelect($event)"  >
+  </div>
+  <div *ngIf="imageData">
+    <img [src]="imageData" alt="">
+  </div>
+  <!-- <mat-form-field>
     <mat-label>Image</mat-label>
     <input type="text" formControlName="image" matInput >
-  </mat-form-field>
+  </mat-form-field> -->
   <button mat-raised-button color="primary" [disabled]="!addPostForm.valid">Create Post</button>
 </form>
