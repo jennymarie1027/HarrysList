@@ -10,7 +10,6 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   constructor() {}
-
   intercept(
     request: HttpRequest<unknown>,
     next: HttpHandler
@@ -22,9 +21,8 @@ export class AuthInterceptor implements HttpInterceptor {
           Authorization: `Bearer ${id_token}`,
         },
       });
-      console.log('request =', request);
+      console.log('request from AuthInterceptor =', request);
     }
-
     return next.handle(request);
   }
 }

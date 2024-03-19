@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PostService } from 'src/app/services/post.service';
-import { Router } from '@angular/router';
-import { map } from 'rxjs';
 
 @Component({
   selector: 'app-home-page',
@@ -18,9 +16,7 @@ export class HomePageComponent {
   imageData;
   images;
 
-  toBase64 = (uInt8Array) => btoa(String.fromCharCode(...uInt8Array));
-
-  constructor(private postService: PostService, private router: Router) {}
+  constructor(private postService: PostService) {}
 
   ngOnInit() {
     this.getAllImages();
@@ -28,24 +24,24 @@ export class HomePageComponent {
 
   getAllImages() {
     this.postService.getImages().subscribe((images) => {
-      console.log(images);
       this.images = images;
     });
-    // this.postService.getImages().subscribe(
-    //   map((data) => console.log('data ===', data))
-    // )
   }
 
   onImageSubmit() {
-    this.imageForm.value.image = `data:image/jpeg;base64,${this.toBase64(
-      this.imageForm.value.image
-    )}`;
-    // console.log('this.imageForm.value.image', this.imageForm.value.image);
-    this.postService.addImage(this.imageForm.value).subscribe((res) => {
-      console.log(res);
-    });
+    this.postService
+      .addImage(this.imageForm.value.name, this.imageForm.value.image)
+      .subscribe((res) => {
+        console.log('from addImage service', res);
+      });
+    this.imageForm.reset();
+    this.imageData = null;
   }
 
+  // choosing the first & only image & setting the particular image to the file type
+  // we are then patching that value, only allowing png & jpeg types
+  // read that file in, once its loaded set local variable imageData to the reader result as a string
+  // then we use the reader to read the data url for our uploaded file
   onFileSelect(event: Event) {
     const file = (event.target as HTMLInputElement).files[0];
     this.imageForm.patchValue({ image: file });
@@ -57,12 +53,5 @@ export class HomePageComponent {
       };
       reader.readAsDataURL(file); // converts file for us
     }
-  }
-
-  onSubmit(){
-    console.log('file selected', event);
-    this.imageForm.reset();
-    this.imageData = null;
-
   }
 }

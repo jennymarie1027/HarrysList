@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap, map } from 'rxjs';
 import { Post } from '../../models/Post';
 
 @Injectable({
@@ -9,6 +9,7 @@ import { Post } from '../../models/Post';
 export class PostService {
   API_URL = 'http://localhost:8081';
   posts$: BehaviorSubject<Post[]> = new BehaviorSubject([]);
+  images$: BehaviorSubject<any> = new BehaviorSubject([]);
 
   constructor(private http: HttpClient) {}
 
@@ -40,11 +41,28 @@ export class PostService {
     return this.http.put(`${this.API_URL}/post/${id}`, values);
   }
 
-  addImage(values) {
-    return this.http.post(`${this.API_URL}/images`, values);
+  // addImage(values) {
+  //   return this.http.post<any>(`${this.API_URL}/images`, values);
+  // }
+
+  addImage(name: string, image: File): Observable<any> {
+    const imageData = new FormData();
+    imageData.append('name', name);
+    imageData.append('image', image, name);
+    return this.http.post(`${this.API_URL}/images`, imageData).pipe(
+      tap(() => {
+        const image: any = {
+          name: name,
+          // image: imageData.imagePath
+        };
+        // this.images.push(image)
+        this.images$.next(image);
+      })
+      // , tap(() => this.images$.next(image))
+    );
   }
 
   getImages() {
-    return this.http.get(`${this.API_URL}/images`)
+    return this.http.get(`${this.API_URL}/images`);
   }
 }
