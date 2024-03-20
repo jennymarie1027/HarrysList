@@ -13,8 +13,9 @@ export class PostService {
 
   constructor(private http: HttpClient) {}
 
-  createPost(postDetails: Post): Observable<any> {
+  createPost(postDetails): Observable<any> {
     postDetails.authorId = localStorage.getItem('author_id');
+    console.log('postDetails = ', postDetails)
     return this.http.post(`${this.API_URL}/posts`, postDetails);
   }
 

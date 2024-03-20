@@ -1,4 +1,4 @@
-<form class="container" [formGroup]="addPostForm" (ngSubmit)="onAddPostSubmit()">
+<form class="container" [formGroup]="addPostForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
   <mat-form-field>
     <mat-label>Title</mat-label>
     <input type="text" id="title" formControlName="title" matInput required>
@@ -29,14 +29,7 @@
   </div>
   <div>
     <mat-label>Image</mat-label>
-    <input type="file" id="image" name="image" (change)="onFileSelect($event)"  >
+    <input type="file" id="image" name="postImage" (change)="onFileSelected($event)"  >
   </div>
-  <div *ngIf="imageData">
-    <img [src]="imageData" alt="">
-  </div>
-  <!-- <mat-form-field>
-    <mat-label>Image</mat-label>
-    <input type="text" formControlName="image" matInput >
-  </mat-form-field> -->
-  <button mat-raised-button color="primary" [disabled]="!addPostForm.valid">Create Post</button>
+  <button type="submit" mat-raised-button color="primary" [disabled]="!addPostForm.valid">Create Post</button>
 </form>
