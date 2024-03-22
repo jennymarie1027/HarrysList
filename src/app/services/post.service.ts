@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap, map } from 'rxjs';
 import { Post } from '../../models/Post';
@@ -15,8 +15,13 @@ export class PostService {
 
   createPost(postDetails): Observable<any> {
     postDetails.authorId = localStorage.getItem('author_id');
-    console.log('postDetails = ', postDetails)
-    return this.http.post(`${this.API_URL}/posts`, postDetails);
+    console.log('postDetails = ', postDetails);
+    //  "Content-Type": "multipart/form-data"
+    let headers = new HttpHeaders();
+    headers = headers.append('Authorization', localStorage.getItem('id_token'));
+    headers = headers.append('Content-Type', 'multipart/form-data');
+    console.log('headers = ', headers)
+    return this.http.post(`${this.API_URL}/posts`, { headers }, postDetails);
   }
 
   getAllPosts(): Observable<Post[]> {

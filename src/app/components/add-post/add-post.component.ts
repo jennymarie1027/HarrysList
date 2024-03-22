@@ -12,27 +12,25 @@ export class AddPostComponent {
   addPostForm: FormGroup = new FormGroup({
     title: new FormControl('image test', [Validators.required]),
     description: new FormControl('image test', [Validators.required]),
-    image: new FormControl(''),
+    file: new FormControl(),
     price: new FormControl('3', [Validators.required]),
     category: new FormControl('test', [Validators.required]),
   });
-  imageData: string;
   selectedFile: File;
 
   constructor(private postService: PostService, private router: Router) {}
 
   onFileSelected(event): void {
     this.selectedFile = <File>event.target.files[0];
+    console.log('selected file: ', this.selectedFile);
+    this.addPostForm.patchValue({
+      file: this.selectedFile,
+    });
   }
 
   onSubmit(): void {
-    console.log('this.selectedFile ', this.selectedFile);
-    this.addPostForm.patchValue({
-      image: this.selectedFile,
-    });
-    this.postService.createPost(this.selectedFile).subscribe((res) => {
-      console.log('createPost res =', res);
-    });
+    console.log('this.addPost.value =', this.addPostForm.value)
+    this.postService.createPost(this.addPostForm.value).subscribe();
     // this.router.navigateByUrl('/posts');
   }
 
@@ -41,21 +39,4 @@ export class AddPostComponent {
       this.addPostForm.get(name).errors && this.addPostForm.get(name).touched
     );
   }
-
-  // choosing the first & only image & setting the particular image to the file type
-  // we are then patching that value, only allowing png & jpeg types
-  // read that file in, once its loaded set local variable imageData to the reader result as a string
-  // then we use the reader to read the data url for our uploaded file
-  // onFileSelect(event: Event) {
-  //   const file = (event.target as HTMLInputElement).files[0];
-  //   this.addPostForm.patchValue({ image: file });
-  //   const allowedFileTypes = ['image/png', 'image/jpeg', 'image/jpg'];
-  //   if (file && allowedFileTypes.includes(file.type)) {
-  //     const reader = new FileReader();
-  //     reader.onload = () => {
-  //       this.imageData = reader.result as string;
-  //     };
-  //     reader.readAsDataURL(file); // converts file for us
-  //   }
-  // }
 }
