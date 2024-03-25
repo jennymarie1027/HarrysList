@@ -33,12 +33,6 @@ export class AddPostComponent {
     });
   }
 
-  // onSubmit(): void {
-  //   console.log('this.addPost.value =', this.addPostForm.value);
-  //   this.postService.createPost(this.addPostForm.value).subscribe();
-  //   // this.router.navigateByUrl('/posts');
-  // }
-
   onSubmit(): void {
     let formData: FormData = new FormData();
     formData.append('file', this.selectedFile);

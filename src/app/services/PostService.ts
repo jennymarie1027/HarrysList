@@ -14,7 +14,6 @@ export class PostService {
   constructor(private http: HttpClient) {}
 
   createPost(postDetails): Observable<any> {
-    // postDetails.authorId = localStorage.getItem('author_id');
     return this.http.post(`${this.API_URL}/posts`, postDetails); 
   }
 
@@ -41,27 +40,4 @@ export class PostService {
     return this.http.put(`${this.API_URL}/post/${id}`, values);
   }
 
-  // addImage(values) {
-  //   return this.http.post<any>(`${this.API_URL}/images`, values);
-  // }
-  addImage(name: string, image: File): Observable<any> {
-    const imageData = new FormData();
-    imageData.append('name', name);
-    imageData.append('image', image, name);
-    return this.http.post(`${this.API_URL}/images`, imageData).pipe(
-      tap(() => {
-        const image: any = {
-          name: name,
-          // image: imageData.imagePath
-        };
-        // this.images.push(image)
-        this.images$.next(image);
-      })
-      // , tap(() => this.images$.next(image))
-    );
-  }
-
-  getImages() {
-    return this.http.get(`${this.API_URL}/images`);
-  }
 }
