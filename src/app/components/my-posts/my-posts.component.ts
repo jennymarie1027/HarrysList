@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PostService } from 'src/app/services/post.service';
+import { PostService } from 'src/app/services/PostService';
 import { Post } from 'src/models/Post';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
@@ -12,10 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class MyPostsComponent {
   posts: Post[];
 
-  constructor(
-    private postService: PostService,
-    private router: Router,
-  ) {}
+  constructor(private postService: PostService, private router: Router) {}
 
   ngOnInit() {
     this.getPosts();
@@ -23,7 +20,7 @@ export class MyPostsComponent {
 
   getPosts() {
     this.postService.getMyPosts().subscribe((posts: Post[]) => {
-      this.posts = posts
+      this.posts = posts;
     });
   }
 

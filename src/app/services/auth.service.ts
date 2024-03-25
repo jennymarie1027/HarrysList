@@ -16,7 +16,8 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(loginCredentials: LoginCredentials): Observable<any> {
-    return this.http.post(`${this.API_URL}/auth/login`, loginCredentials).pipe(
+    return this.http.post(`${this.API_URL}/auth/login`, loginCredentials)
+    .pipe(
       map((res: any) => {
         console.log('res in login =', res);
         this.setSession(res);

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PostService } from 'src/app/services/post.service';
+import { PostService } from 'src/app/services/PostService';
 import { Post } from 'src/models/Post';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -36,7 +36,7 @@ export class PostEditComponent {
 
   onEditPostSubmit() {
     const { id } = this.route.snapshot.params;
-    if(id){
+    if (id) {
       this.postService.editPost(id, this.editPostForm.value).subscribe();
       this.router.navigateByUrl('/posts');
     }
