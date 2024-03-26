@@ -1,5 +1,4 @@
   <div id="cardContainer">
-    {{post.file | json}}
     <div>
       <div *ngIf="post.file;else placeholder">
         <img class="mb-1 mx-auto h-[100px]" [src]=post.file alt="">

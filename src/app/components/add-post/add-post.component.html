@@ -1,32 +1,35 @@
 <form class="container" [formGroup]="addPostForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
   <mat-form-field>
     <mat-label>Title</mat-label>
-    <input type="text" id="title" formControlName="title" matInput required [(ngModel)]="model.title"> 
+    <input type="text" id="title" formControlName="title" matInput required> 
   </mat-form-field>
   <div *ngIf="checkControlForError('title')">
     <p class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">Title is required</p>
   </div>
   <mat-form-field>
     <mat-label>Price</mat-label>
-    <input type="number" formControlName="price" matInput required [(ngModel)]="model.price">
+    <input type="number" formControlName="price" matInput required>
   </mat-form-field>
   <div *ngIf="checkControlForError('price')">
     <p class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">Price is required</p>
   </div>
   <mat-form-field>
     <mat-label>Category</mat-label>
-    <input type="text" formControlName="category" matInput [(ngModel)]="model.category">
+    <input type="text" formControlName="category" matInput>
   </mat-form-field>
   <div *ngIf="checkControlForError('category')">
     <p class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">Category is required</p>
   </div>
   <mat-form-field>
     <mat-label>Description</mat-label>
-    <input type="text" formControlName="description" matInput [(ngModel)]="model.description"/>
+    <input type="text" formControlName="description" matInput/>
   </mat-form-field>
   <div *ngIf="checkControlForError('description')">
     <p class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">Description is required</p>
   </div>
   <input type="file" name="file" (change)="onFileSelected($event)"  >
   <button mat-raised-button color="primary" [disabled]="!addPostForm.valid">Create Post</button>
+  <div *ngIf="generalError">
+    <p class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">Something went wrong creating post</p>
+  </div>
 </form>

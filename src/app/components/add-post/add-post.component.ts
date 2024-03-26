@@ -10,37 +10,40 @@ import { Router } from '@angular/router';
 })
 export class AddPostComponent {
   addPostForm: FormGroup = new FormGroup({
-    title: new FormControl('image test', [Validators.required]),
-    description: new FormControl('image test', [Validators.required]),
+    title: new FormControl('error test', [Validators.required]),
+    description: new FormControl('error test', [Validators.required]),
     file: new FormControl(),
-    price: new FormControl('3', [Validators.required]),
-    category: new FormControl('test', [Validators.required]),
+    price: new FormControl('3444', [Validators.required]),
+    category: new FormControl('error test', [Validators.required]),
   });
   selectedFile: File;
-  model = {
-    title: null,
-    description: null,
-    price: null,
-    category: null
-  }
-
+  formData: FormData = new FormData();
+  generalError: boolean = false
+  
   constructor(private postService: PostService, private router: Router) {}
 
   onFileSelected(event): void {
     this.selectedFile = <File>event.target.files[0];
-    this.addPostForm.patchValue({
-      file: this.selectedFile,
+  }
+
+  formatFormData(){
+    this.formData.append('file', this.selectedFile);
+    this.formData.append('authorId', localStorage.getItem('author_id'));
+    Object.keys(this.addPostForm.value).forEach((key) => {
+      this.formData.append(key, this.addPostForm.value[key]);
     });
   }
 
   onSubmit(): void {
-    let formData: FormData = new FormData();
-    formData.append('file', this.selectedFile);
-    formData.append('authorId', localStorage.getItem('author_id'));
-    Object.keys(this.model).forEach((key) => {
-      formData.append(key, this.model[key]);
-    });
-    this.postService.createPost(formData).subscribe(res => console.log('createPostRes = ', res));
+    try {
+      this.formatFormData()
+      this.postService.createPost(this.formData).subscribe();
+      this.router.navigateByUrl('/posts')
+    } catch (error) {
+      this.generalError = true
+      console.log('error from adding post = ', error)
+    }
+
   }
 
   checkControlForError(name) {
