@@ -14,7 +14,12 @@ export class PostService {
   constructor(private http: HttpClient) {}
 
   createPost(postDetails): Observable<any> {
-    return this.http.post(`${this.API_URL}/posts`, postDetails); 
+    try {
+      return this.http.post(`${this.API_URL}/posts`, postDetails); 
+    } catch (error) {
+      console.log('createPost error = ', error)
+      return error
+    }
   }
 
   getAllPosts(): Observable<Post[]> {
