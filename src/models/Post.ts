@@ -6,4 +6,5 @@ export interface Post {
   category: string,
   description: string,
   image?: string
+  file?: string
 }

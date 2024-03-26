@@ -19,7 +19,7 @@ export class PostService {
 
   getAllPosts(): Observable<Post[]> {
     return this.http
-      .get<Post[]>(`${this.API_URL}/posts`)
+      .get<Post[]>(`${this.API_URL}/posts`, )
       .pipe(tap((p) => this.posts$.next(p)));
   }
 

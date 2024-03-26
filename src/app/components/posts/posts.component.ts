@@ -22,6 +22,7 @@ export class PostsComponent {
   getPosts() {
     this.postService.getAllPosts().subscribe((posts) => {
       this.posts = posts;
+      console.log('posts = ', posts)
     });
   }
 

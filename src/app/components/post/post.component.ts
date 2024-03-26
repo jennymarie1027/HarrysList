@@ -17,4 +17,9 @@ export class PostComponent {
   navToPostDetails(id) {
     this.router.navigateByUrl('/posts/' + id);
   }
+
+  formatImageSrc(filepath: string){
+    console.log(`http://localhost:8081/${filepath}`)
+    return `http://localhost:8081/${filepath}.png`
+  }
 }

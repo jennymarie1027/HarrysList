@@ -1,7 +1,8 @@
   <div id="cardContainer">
+    {{post.file | json}}
     <div>
-      <div *ngIf="post.image;else placeholder">
-        <img class="mb-1 mx-auto h-[100px]" [src]="post.image" alt="">
+      <div *ngIf="post.file;else placeholder">
+        <img class="mb-1 mx-auto h-[100px]" [src]=post.file alt="">
       </div>
       <ng-template #placeholder>
         <mat-icon fontIcon="image"></mat-icon>
