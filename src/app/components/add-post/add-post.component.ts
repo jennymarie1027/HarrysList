@@ -33,16 +33,33 @@ export class AddPostComponent {
     });
   }
 
+  // onSubmit(): void {
+  //   // trycatch isn't doing anything here or in the post service
+  //   try {
+  //     this.formatFormData();
+  //     this.postService.createPost(this.formData).subscribe();
+  //     this.router.navigateByUrl('/posts');
+  //   } catch (error) {
+  //     this.generalError = true;
+  //     console.log('error from adding post = ', error);
+  //   }
+  // }
+
   onSubmit(): void {
-    // trycatch isn't doing anything here or in the post service
-    try {
-      this.formatFormData();
-      this.postService.createPost(this.formData).subscribe();
-      this.router.navigateByUrl('/posts');
-    } catch (error) {
-      this.generalError = true;
-      console.log('error from adding post = ', error);
-    }
+    this.formatFormData()
+    this.postService.createPost(this.formData).subscribe({
+      next: () => {
+        // this.router.navigateByUrl('/posts')
+      },
+      error: (err) => {
+        console.log('error creating post: ', err)
+        if(!err.status) {
+          this.addPostForm.setErrors({ noConnection: true})
+        } else {
+          this.addPostForm.setErrors({ createPostError: true})
+        }
+      }
+    })
   }
 
   checkControlForError(name) {

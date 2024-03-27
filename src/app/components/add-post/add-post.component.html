@@ -29,7 +29,13 @@
   </div>
   <input type="file" name="file" (change)="onFileSelected($event)"  >
   <button mat-raised-button color="primary" [disabled]="!addPostForm.valid">Create Post</button>
-  <div *ngIf="generalError">
+  <div *ngIf="addPostForm.errors">
+    <div *ngIf="addPostForm.errors['noConnection']">
+      <p class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">No Internet Connection</p>
+    </div>
+    <div *ngIf="addPostForm.errors['createPostError']">
     <p class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">Something went wrong creating post</p>
   </div>
+</div>
 </form>
+
