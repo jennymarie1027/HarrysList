@@ -12,13 +12,12 @@ export class AddPostComponent {
   addPostForm: FormGroup = new FormGroup({
     title: new FormControl('error test', [Validators.required]),
     description: new FormControl('error test', [Validators.required]),
-    file: new FormControl(File, [Validators.required]),
+    file: new FormControl( ),
     price: new FormControl('3444', [Validators.required]),
     category: new FormControl('error test', [Validators.required]),
   });
   selectedFile: File;
   formData: FormData = new FormData();
-  generalError: boolean = false;
 
   constructor(private postService: PostService, private router: Router) {}
 
@@ -28,28 +27,17 @@ export class AddPostComponent {
 
   formatFormData() {
     this.formData.append('authorId', localStorage.getItem('author_id'));
+    this.formData.append('file', this.selectedFile);
     Object.keys(this.addPostForm.value).forEach((key) => {
       this.formData.append(key, this.addPostForm.value[key]);
     });
   }
 
-  // onSubmit(): void {
-  //   // trycatch isn't doing anything here or in the post service
-  //   try {
-  //     this.formatFormData();
-  //     this.postService.createPost(this.formData).subscribe();
-  //     this.router.navigateByUrl('/posts');
-  //   } catch (error) {
-  //     this.generalError = true;
-  //     console.log('error from adding post = ', error);
-  //   }
-  // }
-
   onSubmit(): void {
     this.formatFormData()
     this.postService.createPost(this.formData).subscribe({
       next: () => {
-        // this.router.navigateByUrl('/posts')
+        this.router.navigateByUrl('/posts')
       },
       error: (err) => {
         console.log('error creating post: ', err)
