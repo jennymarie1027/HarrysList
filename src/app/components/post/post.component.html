@@ -1,7 +1,7 @@
   <div id="cardContainer">
     <div>
       <div *ngIf="post.file;else placeholder">
-        <img class="mb-1 mx-auto h-[100px]" [src]=configureImagePath() alt="">
+        <img class="mb-1 mx-auto h-[100px]" [src]=configureImagePath() alt="" (click)="updateImagePath()">
       </div>
       <ng-template #placeholder>
         <mat-icon fontIcon="image"></mat-icon>

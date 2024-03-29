@@ -9,15 +9,28 @@ import { Post } from 'src/models/Post';
 })
 export class PostComponent {
   @Input() post: Post;
+  fileListLength: number;
+  currentIndex: number = 0
 
   constructor(private router: Router) {}
 
+  ngOnInit(){
+    this.fileListLength = this.post.file.length
+  }
+
   configureImagePath(){
-    return `http://localhost:8081/${this.post.file[0].path}`
+    return `http://localhost:8081/${this.post.file[this.currentIndex].path}`
   }
 
   navToPostDetails(id) {
     this.router.navigateByUrl('/posts/' + id);
   }
 
+  updateImagePath(){
+    if(this.currentIndex < this.fileListLength - 1) {
+      this.currentIndex++
+    } else {
+      this.currentIndex = 0
+    }
+  }
 }
