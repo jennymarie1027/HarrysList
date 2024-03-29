@@ -1,26 +1,21 @@
 <div  *ngIf="post">
   <mat-card class="m-6 p-6">
-    <div>
-      <!-- <img class="mb-1 mx-auto h-[100px]" [src]="post.image" alt=""> -->
-      <div>
-        <h3>Title: {{ post.title }}</h3>
-        <h5>Category: {{ post.category }}</h5>
-        <h4>Description: {{ post.description}}</h4>
-      </div>
-      <div>
-        <span>Price: {{ post.price ? post.price : 'No price listed'}}</span>
-      </div>
-    </div>
-    <div>
+    <h3>Title: {{ post.title }}</h3>
+    <h5>Category: {{ post.category }}</h5>
+    <h4>Description: {{ post.description}}</h4>
+    <span>Price: {{ post.price ? post.price : 'No price listed'}}</span>
 
-      <div *ngIf="post.image;else placeholder">
-        <img class="mb-1 mx-auto h-[100px]" [src]="post.image" alt="">
+    <div *ngIf="post.file;else placeholder" class="container">
+      <div *ngFor="let image of post.file">
+        <img class="mb-1 mx-auto h-[100px] containerItem" [src]=configureImagePath(image.path) alt="">
       </div>
-      <ng-template #placeholder>
-        <mat-icon fontIcon="image"></mat-icon>
-      </ng-template>
     </div>
+
+    <ng-template #placeholder>
+      <mat-icon fontIcon="image"></mat-icon>
+    </ng-template>
   </mat-card>
+
   <button mat-raised-button color="primary" class="mx-6" routerLink="/posts">Return to Posts</button>
   <div *ngIf="isOwner()" class="mt-3 mx-6">
     <button mat-raised-button color="warn" class="mr-3" (click)="onDeletePost(post._id)">Delete</button>

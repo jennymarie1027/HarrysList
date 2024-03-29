@@ -10,8 +10,6 @@ import { Post } from 'src/models/Post';
 })
 export class PostDetailComponent {
   post: undefined | Post;
-  placeholder =
-    'https://images.unsplash.com/photo-1612178537253-bccd437b730e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 
   constructor(
     private route: ActivatedRoute,
@@ -21,7 +19,10 @@ export class PostDetailComponent {
 
   ngOnInit() {
     const { id } = this.route.snapshot.params;
-    this.postService.getPost(id).subscribe((post: Post) => (this.post = post));
+    this.postService.getPost(id).subscribe((post: Post) => {
+      this.post = post
+      console.log(this.post)
+    });
   }
 
   isOwner() {
@@ -38,5 +39,9 @@ export class PostDetailComponent {
 
   navToPostEdit(id) {
     this.router.navigateByUrl('/edit-post/' + id);
+  }
+
+  configureImagePath(path){
+    return `http://localhost:8081/${path}`
   }
 }
