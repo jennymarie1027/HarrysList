@@ -8,13 +8,15 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class NavComponent {
   signedin = false;
-  email = ''
+  email = '';
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    this.authService.signedin$.subscribe((signedin) => this.signedin = signedin)
-    this.authService.email$.subscribe((email) => this.email = email)
+    this.authService.signedin$.subscribe(
+      (signedin) => (this.signedin = signedin)
+    );
+    this.authService.email$.subscribe((email) => (this.email = email));
     this.signedin = this.authService.isLoggedIn();
+    console.log('email = ', this.email);
   }
-
 }
