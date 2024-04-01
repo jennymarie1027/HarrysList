@@ -36,6 +36,7 @@ import { MyPostsComponent } from './components/my-posts/my-posts.component';
 import { PostComponent } from './components/post/post.component';
 import { PostEditComponent } from './components/post-edit/post-edit.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MyPostsComponent,
     PostComponent,
     PostEditComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

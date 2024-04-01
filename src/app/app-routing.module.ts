@@ -10,6 +10,7 @@ import { LogoutComponent } from './auth/logout/logout.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { MyPostsComponent } from './components/my-posts/my-posts.component';
 import { PostEditComponent } from './components/post-edit/post-edit.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -17,12 +18,12 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent },
   { path: 'messages', component: MessagesComponent },
   { path: 'myposts', component: MyPostsComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: 'posts', component: PostsComponent },
   { path: 'add-post', component: AddPostComponent },
   { path: 'edit-post/:id', component: PostEditComponent },
   { path: 'posts/:id', component: PostDetailComponent },
   { path: '', component: HomePageComponent },
-
 ];
 
 @NgModule({

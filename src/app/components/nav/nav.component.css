@@ -10,3 +10,9 @@
   color: #757ce8;
   border-radius: .6em;
 }
+
+.container {
+  display: flex;
+  min-width: 99%;
+  justify-content: space-between;
+}

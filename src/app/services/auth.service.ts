@@ -4,6 +4,7 @@ import { Observable, BehaviorSubject, map, tap, catchError } from 'rxjs';
 import * as moment from 'moment';
 import { LoginCredentials } from 'src/models/LoginCreds';
 import { SignupCredentials } from 'src/models/SignupCreds';
+import { LoginResponse } from 'src/models/LoginResponse';
 // reference: https://blog.angular-university.io/angular-jwt-authentication/
 
 @Injectable({
@@ -12,18 +13,34 @@ import { SignupCredentials } from 'src/models/SignupCreds';
 export class AuthService {
   API_URL = 'http://localhost:8081';
   signedin$: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  email$: BehaviorSubject<string> = new BehaviorSubject('');
 
   constructor(private http: HttpClient) {}
 
   login(loginCredentials: LoginCredentials): Observable<any> {
-    return this.http.post(`${this.API_URL}/auth/login`, loginCredentials)
-    .pipe(
+    let email: string;
+    return this.http.post(`${this.API_URL}/auth/login`, loginCredentials).pipe(
       map((res: any) => {
-        console.log('res in login =', res);
+        email = res.email;
         this.setSession(res);
       }),
-      tap(() => this.signedin$.next(true))
-    );
+      tap(() => this.signedin$.next(true)),
+      tap(() => this.email$.next(email))
+      );
+    }
+    
+    signup(signupCredentials: SignupCredentials): Observable<any> {
+      let email: string;
+      return this.http
+      .post(`${this.API_URL}/auth/register`, signupCredentials)
+      .pipe(
+        map((res: any) => {
+          email = res.email;
+          this.setSession(res);
+        }),
+        tap(() => this.signedin$.next(true)),
+        tap(() => this.email$.next(email))
+      );
   }
 
   private setSession(authResult) {
@@ -31,7 +48,7 @@ export class AuthService {
 
     localStorage.setItem('id_token', authResult.jwtBearerToken);
     localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
-    localStorage.setItem('author_id', authResult.user._id);
+    localStorage.setItem('author_id', authResult._id);
   }
 
   logout() {
@@ -53,9 +70,5 @@ export class AuthService {
     const expiration = localStorage.getItem('expires_at');
     const expiresAt = JSON.parse(expiration);
     return moment(expiresAt);
-  }
-
-  signup(signupCredentials: SignupCredentials): Observable<any> {
-    return this.http.post(`${this.API_URL}/auth/register`, signupCredentials);
   }
 }
