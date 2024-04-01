@@ -14,8 +14,13 @@
     <p class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">Price is required</p>
   </div>
   <mat-form-field>
-    <mat-label>Category</mat-label>
-    <input type="text" formControlName="category" matInput>
+    <!-- <mat-label>Category</mat-label>
+    <input type="select" formControlName="category" matInput> -->
+    <mat-select formControlName="category" name="category">
+      <ng-container *ngFor="let cat of cats">
+        <mat-option [value]="cat.value">{{cat.value}}</mat-option>
+      </ng-container>
+    </mat-select>
   </mat-form-field>
   <div *ngIf="checkControlForError('category')">
     <p class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">Category is required</p>
@@ -28,7 +33,7 @@
     <p class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">Description is required</p>
   </div>
   <input type="file" name="file" multiple (change)="onFileSelected($event)"  >
-  <button mat-raised-button color="primary" [disabled]="!addPostForm.valid">Create Post</button>
+  <button mat-raised-button color="primary" (click)="checkValues()" [disabled]="!addPostForm.valid">Create Post</button>
     <!-- <div *ngIf="addPostForm.errors">
       <div *ngIf="addPostForm.errors['noConnection']">
         <p class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">No Internet Connection</p>

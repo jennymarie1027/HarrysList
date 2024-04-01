@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PostService } from 'src/app/services/PostService';
 import { Router } from '@angular/router';
+import { categories } from 'src/models/Categories';
 
 @Component({
   selector: 'app-add-post',
@@ -19,6 +20,7 @@ export class AddPostComponent {
   selectedFile: File;
   formData: FormData = new FormData();
   fileList: File[] = [];
+  cats = categories
 
   constructor(private postService: PostService, private router: Router) {}
 
@@ -58,5 +60,9 @@ export class AddPostComponent {
     return (
       this.addPostForm.get(name).errors && this.addPostForm.get(name).touched
     );
+  }
+
+  checkValues(){
+    console.log('this.addPostForm = ', this.addPostForm.value)
   }
 }

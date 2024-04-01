@@ -37,6 +37,7 @@ import { PostComponent } from './components/post/post.component';
 import { PostEditComponent } from './components/post-edit/post-edit.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ProfileComponent } from './components/profile/profile.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     MatBadgeModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
+    MatSelectModule,
   ],
   providers: [
     {
