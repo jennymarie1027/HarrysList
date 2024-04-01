@@ -20,7 +20,7 @@ export class LoginComponent {
     this.authService.login(this.loginForm.value).subscribe({
       next: (response) => {
         this.router.navigateByUrl('/posts');
-        console.log('login component = ', response);
+        console.log('res login component = ', response);
       },
       error: (err) => {
         console.log('error inside login =', err);
