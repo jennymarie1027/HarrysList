@@ -71,4 +71,9 @@ export class AuthService {
     const expiresAt = JSON.parse(expiration);
     return moment(expiresAt);
   }
+
+  getCurrentUser(){
+    const userId = localStorage.getItem('author_id')
+    return this.http.get<any>(`${this.API_URL}/auth/current_user/${userId}`)
+  }
 }
