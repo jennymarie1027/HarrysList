@@ -10,6 +10,7 @@
   <div>
     <button mat-button [matMenuTriggerFor]="menu" *ngIf="signedin" class="profileBadge">{{email.slice(0, 1).toUpperCase()}}</button>
       <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/profile" *ngIf="signedin">View {{email ? email + 's' : 'Your'}} Profile</button>
         <button mat-menu-item routerLink="/myposts" *ngIf="signedin">My Posts</button>
         <button mat-menu-item routerLink="/logout" *ngIf="signedin" >Logout</button>
       </mat-menu>
