@@ -1,4 +1,23 @@
 img {
-  width: 150px;
-  height: 150px;
+  width: 150%;
+  height: 150%;
+  padding: none;
+  margin: none;
+}
+
+ #postPrice {
+  border: 1px solid #ccc;
+  border-bottom: none;
+  border-right: none;
+  position: relative;
+  top: -168px;
+  background-color: white;
+  padding: 6px 0px 3px 5px;
+  border-bottom-right-radius: 5px;
+  border-top-left-radius: 5px;
+  color: #090;
+}
+
+h2 {
+  padding: none;
 }

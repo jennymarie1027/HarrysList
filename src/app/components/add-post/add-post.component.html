@@ -14,8 +14,13 @@
     <p class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">Price is required</p>
   </div>
   <mat-form-field>
-    <!-- <mat-label>Category</mat-label>
-    <input type="select" formControlName="category" matInput> -->
+    <mat-label>Location</mat-label>
+    <input type="text" formControlName="location" matInput required>
+  </mat-form-field>
+  <div *ngIf="checkControlForError('location')">
+    <p class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">location is required</p>
+  </div>
+  <mat-form-field>
     <mat-select formControlName="category" name="category">
       <ng-container *ngFor="let cat of cats">
         <mat-option [value]="cat.value">{{cat.value}}</mat-option>

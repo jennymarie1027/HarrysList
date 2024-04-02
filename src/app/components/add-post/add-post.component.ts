@@ -16,6 +16,7 @@ export class AddPostComponent {
     file: new FormControl(),
     price: new FormControl('3444', [Validators.required]),
     category: new FormControl('error test', [Validators.required]),
+    location: new FormControl('Lincolnshire', [Validators.required])
   });
   selectedFile: File;
   formData: FormData = new FormData();
