@@ -4,6 +4,20 @@
         <span id="postPrice">{{ post.price | currency }}</span>
       </div>
       <h2 (click)="navToPostDetails(post._id)">{{ post.title }}</h2>
+      <div class="detailsContainer">
+        <div class="leftDetails">
+        <!-- favorites **note** just star === filled icon-->
+        <mat-icon fontIcon="star_outlined"></mat-icon> 
+        <!-- time posted -->
+        <p>{{configureDate()}}</p>
+        <!-- location -->
+        <p>{{post.location}}</p>
+        </div>
+        <div>
+          <!-- option to hide post -->
+          <i class="material-icons">hide_source</i>
+        </div>
+      </div>
   </div>
 
   <ng-template #placeholder>

@@ -9,4 +9,6 @@ export interface Post {
   description: string;
   image?: string;
   file: File[];
+  location: string;
+  postCreated?: Date
 }

@@ -10,14 +10,20 @@ img {
   border-bottom: none;
   border-right: none;
   position: relative;
-  top: -168px;
+  top: -205px;
   background-color: white;
   padding: 6px 0px 3px 5px;
   border-bottom-right-radius: 5px;
   border-top-left-radius: 5px;
   color: #090;
 }
+.detailsContainer {
+  display: flex;
+  justify-content: space-between;
+ }
 
-h2 {
-  padding: none;
+.leftDetails {
+  display: flex;
+  width: 60%;
+  justify-content: space-between;
 }

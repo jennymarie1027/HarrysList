@@ -11,11 +11,13 @@ export class PostComponent {
   @Input() post: Post;
   fileListLength: number;
   currentIndex: number = 0
+  datePostCreated: number;
 
   constructor(private router: Router) {}
 
   ngOnInit(){
     this.fileListLength = this.post.file.length
+    this.configureDate()
   }
 
   configureImagePath(){
@@ -32,5 +34,14 @@ export class PostComponent {
     } else {
       this.currentIndex = 0
     }
+  }
+
+  configureDate(){
+    let d: Date = new Date(this.post.postCreated)
+    const month = d.getMonth()
+    const day =  d.getDate()
+    const year =  d.getFullYear().toString()
+    console.log(`posted ${month}/${day}/${year.slice(2)}`)
+    return `${month}/${day}/${year.slice(2)}`
   }
 }
