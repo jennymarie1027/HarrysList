@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { PostService } from 'src/app/services/PostService';
 import { AuthService } from 'src/app/services/auth.service';
-
+import { Post } from 'src/models/Post';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -8,9 +9,25 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class ProfileComponent {
   email = '';
-  constructor(private authService: AuthService) {}
+  faveoriteList:any
+  favorites:any = []
+  constructor(private authService: AuthService, private postService: PostService) {}
 
   ngOnInit() {
+    this.getUserEmail()
+    this.getListOfFaves()
+    this.getListOfFaves()
+  }
+
+  getUserEmail(){
     this.authService.email$.subscribe((email) => this.email = email)
+  }
+
+  getListOfFaves(){
+    const userId = localStorage.getItem('user_id')
+    this.postService.getFaves(userId).subscribe((res) => {
+      console.log('list of faves = ', res)
+      this.favorites = res
+    })
   }
 }

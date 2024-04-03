@@ -46,7 +46,13 @@ export class PostService {
     return this.http.put(`${this.API_URL}/post/${id}`, values);
   }
 
+  ///// favorites work below //////////////
+
   addFave(userId, postId) {
     return this.http.post(`${this.API_URL}/myfavorites`, {postId, userId});
+  }
+
+  getFaves(userId) {
+    return this.http.get(`${this.API_URL}/myfavorites/${userId}`)
   }
 }

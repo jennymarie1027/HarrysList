@@ -1,2 +1,8 @@
 <h2>My Profile</h2>
 <button mat-button routerLink="/myposts">View My Posts</button>
+<h4>My Favorites</h4>
+  <div *ngFor="let post of favorites">
+    {{post.title}}
+    <app-post [post]=post></app-post>
+</div>
+

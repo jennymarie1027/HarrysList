@@ -7,7 +7,7 @@
       <div class="detailsContainer">
         <div class="leftDetails">
         <!-- favorites **note** just star === filled icon-->
-        <mat-icon fontIcon="star_outlined"></mat-icon> 
+        <mat-icon (click)="addToFaves()" fontIcon="star_outlined"></mat-icon> 
         <!-- time posted -->
         <p>{{configureDate()}}</p>
         <!-- location -->
