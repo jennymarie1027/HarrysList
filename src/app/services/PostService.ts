@@ -10,21 +10,22 @@ export class PostService {
   API_URL = 'http://localhost:8081';
   posts$: BehaviorSubject<Post[]> = new BehaviorSubject([]);
   images$: BehaviorSubject<any> = new BehaviorSubject([]);
+  favorites$: BehaviorSubject<any> = new BehaviorSubject([]);
 
   constructor(private http: HttpClient) {}
 
   createPost(postDetails): Observable<any> {
     try {
-      return this.http.post(`${this.API_URL}/posts`, postDetails); 
+      return this.http.post(`${this.API_URL}/posts`, postDetails);
     } catch (error) {
-      console.log('createPost error = ', error)
-      return error
+      console.log('createPost error = ', error);
+      return error;
     }
   }
 
   getAllPosts(): Observable<Post[]> {
     return this.http
-      .get<Post[]>(`${this.API_URL}/posts`, )
+      .get<Post[]>(`${this.API_URL}/posts`)
       .pipe(tap((p) => this.posts$.next(p)));
   }
 
@@ -33,8 +34,8 @@ export class PostService {
   }
 
   getMyPosts(): Observable<Post[]> {
-    let authorId = localStorage.getItem('author_id');
-    return this.http.get<Post[]>(`${this.API_URL}/myposts/${authorId}`);
+    let user_id = localStorage.getItem('user_id');
+    return this.http.get<Post[]>(`${this.API_URL}/myposts/${user_id}`);
   }
 
   deletePost(id) {
@@ -45,4 +46,7 @@ export class PostService {
     return this.http.put(`${this.API_URL}/post/${id}`, values);
   }
 
+  addFave(userId, postId) {
+    return this.http.post(`${this.API_URL}/myfavorites`, {postId, userId});
+  }
 }

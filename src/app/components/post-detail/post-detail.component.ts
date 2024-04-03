@@ -27,7 +27,7 @@ export class PostDetailComponent {
 
   isOwner() {
     if (this.post) {
-      return localStorage.getItem('author_id') === this.post.authorId;
+      return localStorage.getItem('user_id') === this.post.authorId;
     }
     return false;
   }

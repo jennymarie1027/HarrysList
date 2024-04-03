@@ -14,7 +14,7 @@
 //   constructor(private http: HttpClient) {}
 
 //   createPost(postDetails): Observable<any> {
-//     postDetails.authorId = localStorage.getItem('author_id');
+//     postDetails.authorId = localStorage.getItem('user_id');
 //     // const headers = new HttpHeaders({
 //     //   'Content-Type': 'multipart/form-data',
 //     // });
@@ -32,7 +32,7 @@
 //   }
 
 //   getMyPosts(): Observable<Post[]> {
-//     let authorId = localStorage.getItem('author_id');
+//     let authorId = localStorage.getItem('user_id');
 //     return this.http.get<Post[]>(`${this.API_URL}/myposts/${authorId}`);
 //   }
 

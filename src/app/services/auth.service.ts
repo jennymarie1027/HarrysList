@@ -48,13 +48,13 @@ export class AuthService {
 
     localStorage.setItem('id_token', authResult.jwtBearerToken);
     localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
-    localStorage.setItem('author_id', authResult._id);
+    localStorage.setItem('user_id', authResult._id);
   }
 
   logout() {
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
-    localStorage.removeItem('author_id');
+    localStorage.removeItem('user_id');
     this.signedin$.next(false);
   }
 
@@ -73,7 +73,7 @@ export class AuthService {
   }
 
   getCurrentUser(){
-    const userId = localStorage.getItem('author_id')
+    const userId = localStorage.getItem('user_id')
     return this.http.get<any>(`${this.API_URL}/auth/current_user/${userId}`)
   }
 }

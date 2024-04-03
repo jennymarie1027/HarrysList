@@ -17,6 +17,6 @@ export class NavComponent {
     );
     this.signedin = this.authService.isLoggedIn();
     this.authService.email$.subscribe((email) => (this.email = email));
-    this.authService.getCurrentUser().subscribe((user) => { this.email = user.email });
+    this.authService.getCurrentUser().subscribe((user) => { this.email = user.currentUser.email });
   }
 }

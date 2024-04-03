@@ -31,7 +31,7 @@ export class AddPostComponent {
   }
 
   formatFormData() {
-    this.formData.append('authorId', localStorage.getItem('author_id'));
+    this.formData.append('authorId', localStorage.getItem('user_id'));
     this.fileList.forEach((fileInList) => {
       this.formData.append("file", fileInList)
     })

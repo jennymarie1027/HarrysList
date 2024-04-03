@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { PostService } from 'src/app/services/PostService';
+import { AuthService } from 'src/app/services/auth.service';
 import { Post } from 'src/models/Post';
 
 @Component({
@@ -13,11 +15,12 @@ export class PostComponent {
   currentIndex: number = 0
   datePostCreated: number;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private postService: PostService, private authService: AuthService) {}
 
   ngOnInit(){
     this.fileListLength = this.post.file.length
     this.configureDate()
+    this.addToFaves()
   }
 
   configureImagePath(){
@@ -42,5 +45,11 @@ export class PostComponent {
     const day =  d.getDate()
     const year =  d.getFullYear().toString()
     return `${month}/${day}/${year.slice(2)}`
+  }
+
+  addToFaves(){
+    // how to I get access to the userID?
+    // this.postService.addFave(post._id) // userId
+    this.authService.getCurrentUser().subscribe((res) => console.log('getCurrentUser = ', res))
   }
 }
