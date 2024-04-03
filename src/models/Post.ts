@@ -10,5 +10,5 @@ export interface Post {
   image?: string;
   file: File[];
   location: string;
-  postCreated?: Date
+  postCreated: Date
 }

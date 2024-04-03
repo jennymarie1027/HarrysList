@@ -41,7 +41,6 @@ export class PostComponent {
     const month = d.getMonth()
     const day =  d.getDate()
     const year =  d.getFullYear().toString()
-    console.log(`posted ${month}/${day}/${year.slice(2)}`)
     return `${month}/${day}/${year.slice(2)}`
   }
 }
