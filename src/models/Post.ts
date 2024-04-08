@@ -11,4 +11,5 @@ export interface Post {
   file: File[];
   location: string;
   postCreated: Date
+  isFave?: boolean
 }

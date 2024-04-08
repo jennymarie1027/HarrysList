@@ -52,6 +52,10 @@ export class PostService {
     return this.http.post(`${this.API_URL}/myfavorites`, {postId, userId});
   }
 
+  removeFave(userId, postId) {
+    return this.http.delete(`${this.API_URL}/myfavorites/${postId}/${userId}`); // , userId
+  }
+
   getFaves(userId) {
     return this.http.get(`${this.API_URL}/myfavorites/${userId}`)
   }

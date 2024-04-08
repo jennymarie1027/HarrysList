@@ -9,8 +9,8 @@
       <div class="detailsContainer">
         <div class="leftDetails">
         <!-- favorites **note** just star === filled icon-->
-        <mat-icon (click)="addToFaves()" fontIcon="star_outlined"></mat-icon> 
-        <!-- THIS ISN'T WORKING AS EXPECTED -->
+        <mat-icon (click)="addToFave()" *ngIf="!isFavorite" fontIcon="star_outlined"></mat-icon> 
+        <mat-icon (click)="removeFromFaves()" *ngIf="isFavorite" fontIcon="star_filled"></mat-icon> 
         <p>{{configureDate()}}</p> 
         <p>{{post.location}}</p>
         </div>
