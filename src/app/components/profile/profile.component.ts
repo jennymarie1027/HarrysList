@@ -28,11 +28,8 @@ export class ProfileComponent {
 
   getListOfFaves() {
     const userId = localStorage.getItem('user_id');
-    this.postService
-      .getFaves(userId)
-      .subscribe((res) => {
-        this.favorites = res
-        console.log('faves res = ', res)
-      });
+    this.postService.getFaves(userId).subscribe((res) => {
+      this.favorites = res;
+    });
   }
 }
