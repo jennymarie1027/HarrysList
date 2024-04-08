@@ -44,16 +44,18 @@ export class PostComponent {
 
   configureDate() {
     let d: Date = new Date(this.post.postCreated);
-    const month = d.getMonth();
+    const month = d.getMonth() + 1;
     const day = d.getDate();
     const year = d.getFullYear().toString();
     return `${month}/${day}/${year.slice(2)}`;
   }
 
   addToFaves() {
-    const userId = localStorage.getItem('user_id')
-    if(userId){
-      this.postService.addFave(userId, this.post._id).subscribe((res) => console.log('addFave res - ', res))
+    const userId = localStorage.getItem('user_id');
+    if (userId) {
+      this.postService
+        .addFave(userId, this.post._id)
+        .subscribe((res) => console.log('addFave res - ', res));
     }
   }
 }

@@ -10,13 +10,11 @@
         <div class="leftDetails">
         <!-- favorites **note** just star === filled icon-->
         <mat-icon (click)="addToFaves()" fontIcon="star_outlined"></mat-icon> 
-        <!-- time posted -->
-        <p>{{configureDate()}}</p>
-        <!-- location -->
+        <!-- THIS ISN'T WORKING AS EXPECTED -->
+        <p>{{configureDate()}}</p> 
         <p>{{post.location}}</p>
         </div>
         <div>
-          <!-- option to hide post -->
           <i class="material-icons">hide_source</i>
         </div>
       </div>
