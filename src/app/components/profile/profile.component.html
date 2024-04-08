@@ -2,14 +2,13 @@
 <button mat-button routerLink="/myposts">View My Posts</button>
 
 <h4>My Favorites</h4>
-<div class="postContainer" *ngIf="favorites;else noFaveMessage">
-  <!-- <ng-container min-h-full border-x mx-auto> -->
-    <div *ngFor="let post of favorites" class="post">
-      {{post.title}}
-      <app-post [post]=post></app-post>
-    </div>
-  <!-- </ng-container> -->
-</div>
+  <div class="postContainer" *ngIf="favorites;else noFaveMessage" min-h-full border-x mx-auto>
+    <ng-container *ngFor="let post of favorites" class="post">
+      <div *ngIf="post">
+        <app-post [post]=post></app-post>
+      </div>
+    </ng-container>
+  </div>
 <ng-template #noFaveMessage>
   <h3>No Favorites Yet</h3>
 </ng-template>

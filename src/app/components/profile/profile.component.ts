@@ -30,6 +30,9 @@ export class ProfileComponent {
     const userId = localStorage.getItem('user_id');
     this.postService
       .getFaves(userId)
-      .subscribe((res) => (this.favorites = res));
+      .subscribe((res) => {
+        this.favorites = res
+        console.log('faves res = ', res)
+      });
   }
 }

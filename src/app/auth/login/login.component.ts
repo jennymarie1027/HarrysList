@@ -10,8 +10,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent {
   loginForm: FormGroup = new FormGroup({
-    email: new FormControl('harry', [Validators.required]),
-    password: new FormControl('harry'),
+    email: new FormControl('harry1', [Validators.required]),
+    password: new FormControl('harry1'),
   });
 
   constructor(private authService: AuthService, private router: Router) {}
