@@ -53,7 +53,7 @@ export class PostComponent {
       this.currentIndex < this.fileListLength - 1 ? this.currentIndex++ : this.currentIndex = 0;
     }
     if(direction === 'back') {
-      this.currentIndex < this.fileListLength - 1 ? this.currentIndex-- : this.currentIndex = this.fileListLength - 1;
+      this.currentIndex === 0 ?  this.currentIndex = this.fileListLength - 1 : this.currentIndex--;
     }
   }
 
