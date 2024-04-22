@@ -25,3 +25,9 @@ img {
   display: flex;
   justify-content: space-between;
 }
+
+.arrow {
+  color: green;
+  display: relative;
+  
+}

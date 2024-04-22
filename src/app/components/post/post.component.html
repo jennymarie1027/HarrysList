@@ -1,8 +1,8 @@
   <div id="cardContainer">
       <div *ngIf="post.file;else placeholder">
-          <img class="mb-1 mx-auto h-[100px]" [src]=configureImagePath() alt="" (click)="updateImagePath()">
-          <mat-icon class="arrow left" fontIcon="arrow_left"></mat-icon>
-          <mat-icon class="arrow right" fontIcon="arrow_right"></mat-icon>
+          <img class="mb-1 mx-auto h-[100px]" [src]=configureImagePath()>
+          <mat-icon (click)="updateImagePath('back')" class="arrow left" fontIcon="arrow_left"></mat-icon>
+          <mat-icon (click)="updateImagePath('forward')" class="arrow right" fontIcon="arrow_right"></mat-icon>
         </div>
       <div id="titleAndPriceContainer">
         <h2 (click)="navToPostDetails(post._id)">{{ post.title }}</h2>

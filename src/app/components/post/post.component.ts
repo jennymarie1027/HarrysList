@@ -48,8 +48,13 @@ export class PostComponent {
     this.router.navigateByUrl('/posts/' + id);
   }
 
-  updateImagePath() {
-    this.currentIndex < this.fileListLength - 1 ? this.currentIndex++ : this.currentIndex = 0;
+  updateImagePath(direction) {
+    if(direction === 'forward') {
+      this.currentIndex < this.fileListLength - 1 ? this.currentIndex++ : this.currentIndex = 0;
+    }
+    if(direction === 'back') {
+      this.currentIndex < this.fileListLength - 1 ? this.currentIndex-- : this.currentIndex = this.fileListLength - 1;
+    }
   }
 
   configureDate() {
