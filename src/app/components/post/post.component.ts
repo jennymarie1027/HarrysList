@@ -99,4 +99,10 @@ export class PostComponent {
       });
     }
   }
+
+  verifyDisplayedImage(index: number): any {
+    if (index === this.currentIndex) {
+      return 'displayedImage'
+    }
+  }
 }

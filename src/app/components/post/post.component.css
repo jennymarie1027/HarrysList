@@ -29,5 +29,25 @@ img {
 .arrow {
   color: green;
   display: relative;
-  
+  text-emphasis: bold;
+}
+
+.arrowContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dot {
+  font-size: 1.5em;
+  margin: 0.25em;
+}
+
+.displayedImage {
+  font-size: 2em;
+}
+
+.dotContainer {
+  display: flex;
+  align-items: center;
 }
