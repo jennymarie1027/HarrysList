@@ -1,14 +1,21 @@
   <div id="cardContainer">
       <div *ngIf="post.file;else placeholder">
-          <img class="mb-1 mx-auto h-[100px]" [src]=configureImagePath()>
-          <div *ngIf="fileListLength > 1" class="arrowContainer">
-            <mat-icon (click)="updateImagePath('back')" class="arrow left" fontIcon="arrow_left"></mat-icon>
-            <span class="dotContainer" *ngFor="let images of post.file; let i = index">
-              <span class="dot" [ngClass]="verifyDisplayedImage(i)">	&#8226; </span>
-            </span>
-            <mat-icon (click)="updateImagePath('forward')" class="arrow right" fontIcon="arrow_right"></mat-icon>
-          </div>
+        <img class="mb-1 mx-auto h-[100px]" [src]=configureImagePath()>
+        <!-- arrows -->
+        <div *ngIf="fileListLength > 1" class="arrowContainer">
+          <mat-icon (click)="updateImagePath('back')" class="arrow left" fontIcon="arrow_left"></mat-icon>
+          <mat-icon (click)="updateImagePath('forward')" class="arrow right" fontIcon="arrow_right"></mat-icon>
         </div>
+        <!-- dots -->
+        <div  class="dotContainer" *ngIf="fileListLength > 1">
+          <ng-container *ngFor="let images of post.file; let i = index">
+            <span class="dot" [ngClass]="verifyDisplayedImage(i)">	&#8226; </span>
+          </ng-container>
+        </div>
+      </div>
+
+
+
       <div id="titleAndPriceContainer">
         <h2 (click)="navToPostDetails(post._id)">{{ post.title }}</h2>
         <p id="postPrice">{{ post.price | currency }}</p>
