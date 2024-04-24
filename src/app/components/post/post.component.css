@@ -28,14 +28,14 @@ img {
 
 .arrow {
   color: green;
-  display: relative;
-  text-emphasis: bold;
 }
 
-.arrowContainer:hover {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.arrowContainer {
+  display: none
+}
+
+.postImage:hover + .arrowContainer {
+  display: block;
 }
 
 .dot {
