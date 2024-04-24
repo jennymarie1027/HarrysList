@@ -34,17 +34,33 @@ img {
   display: none
 }
 
-.postImage:hover + .arrowContainer {
+/* .postImage:hover + .arrowContainer {
   display: block;
+}
+
+.arrowContainer {
+  display: absolute;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: -50;
+  left: 50;
+  z-index: 10;
+} */
+
+.postImage {
+  display: relative
 }
 
 .dot {
   font-size: 1.5em;
   margin: 0.25em;
+  color: grey;
 }
 
 .displayedImage {
   font-size: 2em;
+  color: green
 }
 
 .dotContainer {
