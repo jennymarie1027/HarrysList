@@ -1,11 +1,8 @@
-  <div id="cardContainer">
-      <div *ngIf="post.file;else placeholder">
+  <div class="cardContainer">
+      <div *ngIf="post.file.length;else placeholder">
         <img class="mb-1 mx-auto h-[100px] postImage" [src]=configureImagePath()  (click)="updateImagePath('forward')" >
         <!-- arrows -->
-        <div class="arrowContainer" *ngIf="fileListLength > 1">
-          <mat-icon (click)="updateImagePath('back')" class="arrow left" fontIcon="arrow_left"></mat-icon>
-          <mat-icon (click)="updateImagePath('forward')" class="arrow right" fontIcon="arrow_right"></mat-icon>
-        </div>
+
         <!-- dots -->
         <div  class="dotContainer" *ngIf="fileListLength > 1">
           <ng-container *ngFor="let images of post.file; let i = index">
@@ -14,27 +11,36 @@
         </div>
       </div>
 
+      <!-- <div class="arrowContainer">
+        <mat-icon (click)="updateImagePath('back')" class="arrow left" fontIcon="arrow_left"></mat-icon>
+        <mat-icon (click)="updateImagePath('forward')" class="arrow right" fontIcon="arrow_right"></mat-icon>
+      </div> -->
 
 
 
-      <div id="titleAndPriceContainer">
-        <h2 (click)="navToPostDetails(post._id)">{{ post.title }}</h2>
-        <p id="postPrice">{{ post.price | currency }}</p>
-      </div>
-      <div class="detailsContainer">
-        <div class="leftDetails">
-        <!-- favorites **note** just star === filled icon-->
-        <mat-icon (click)="addToFave()" *ngIf="!isFavorite" fontIcon="star_outlined"></mat-icon> 
-        <mat-icon (click)="removeFromFaves()" *ngIf="isFavorite" fontIcon="star_filled"></mat-icon> 
-        <p>{{configureDate()}}</p> 
-        <p>{{post.location}}</p>
+      <div class="metaData">
+        <div id="titleAndPriceContainer">
+          <h2 (click)="navToPostDetails(post._id)">{{ post.title }}</h2>
+          <p id="postPrice">{{ post.price | currency }}</p>
         </div>
-        <div>
-          <i class="material-icons">hide_source</i>
+        <div class="detailsContainer">
+          <div class="leftDetails">
+          <!-- favorites **note** just star === filled icon-->
+          <mat-icon (click)="addToFave()" *ngIf="!isFavorite" fontIcon="star_outlined"></mat-icon> 
+          <mat-icon (click)="removeFromFaves()" *ngIf="isFavorite" fontIcon="star_filled"></mat-icon> 
+          <p>{{configureDate()}}</p> 
+          <p>{{post.location}}</p>
+          </div>
+          <div>
+            <i class="material-icons">hide_source</i>
+          </div>
         </div>
       </div>
+      
   </div>
 
-  <ng-template #placeholder>
-    <mat-icon fontIcon="image"></mat-icon>
+  <ng-template #placeholder >
+    <div id="placeholder">
+      <mat-icon fontIcon="image" id="matIcon"></mat-icon>
+    </div>
   </ng-template>
