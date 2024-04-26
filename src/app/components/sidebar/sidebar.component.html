@@ -1,1 +1,7 @@
-<p>sidebar works!</p>
+<div id="sidebar">
+  <div class="categories">
+    <ng-container *ngFor="let cat of cats">
+      <p>{{cat.value}}</p>
+    </ng-container>
+  </div>
+</div>
