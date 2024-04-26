@@ -1,22 +1,14 @@
   <div class="cardContainer">
       <div *ngIf="post.file.length;else placeholder">
-        <img class="mb-1 mx-auto h-[100px] postImage" [src]=configureImagePath()  (click)="updateImagePath('forward')" >
-        <!-- arrows -->
-
-        <!-- dots -->
-        <div  class="dotContainer" *ngIf="fileListLength > 1">
-          <ng-container *ngFor="let images of post.file; let i = index">
-            <span class="dot" [ngClass]="verifyDisplayedImage(i)">	&#8226; </span>
-          </ng-container>
+        <div class="imageContainer">
+          <img class="mb-1 mx-auto h-[100px] postImage" [src]=configureImagePath()  (click)="updateImagePath('forward')" >
+          <div  class="dotContainer" *ngIf="fileListLength > 1">
+            <ng-container *ngFor="let images of post.file; let i = index">
+              <span class="dot" [ngClass]="verifyDisplayedImage(i)">	&#8226; </span>
+            </ng-container>
+          </div>
         </div>
       </div>
-
-      <!-- <div class="arrowContainer">
-        <mat-icon (click)="updateImagePath('back')" class="arrow left" fontIcon="arrow_left"></mat-icon>
-        <mat-icon (click)="updateImagePath('forward')" class="arrow right" fontIcon="arrow_right"></mat-icon>
-      </div> -->
-
-
 
       <div class="metaData">
         <div id="titleAndPriceContainer">
@@ -40,7 +32,9 @@
   </div>
 
   <ng-template #placeholder >
-    <div id="placeholder">
-      <mat-icon fontIcon="image" id="matIcon"></mat-icon>
+    <div class="placeholderContainer">
+      <div>
+        <mat-icon fontIcon="image" id="matIcon"></mat-icon>
+      </div>
     </div>
   </ng-template>
