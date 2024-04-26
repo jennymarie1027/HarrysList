@@ -38,6 +38,7 @@ import { PostEditComponent } from './components/post-edit/post-edit.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ProfileComponent } from './components/profile/profile.component';
 import { MatSelectModule } from '@angular/material/select';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { MatSelectModule } from '@angular/material/select';
     MyPostsComponent,
     PostComponent,
     PostEditComponent,
-    ProfileComponent
+    ProfileComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,

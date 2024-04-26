@@ -1,4 +1,5 @@
 <div class="postContainer" *ngIf="posts;else noPostMessage">
+  <app-sidebar></app-sidebar>
   <ng-container min-h-full border-x mx-auto  *ngFor="let post of posts">
     <div class="post">
       <app-post [post]="post"></app-post>

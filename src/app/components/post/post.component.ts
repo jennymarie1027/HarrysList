@@ -22,23 +22,18 @@ export class PostComponent {
     private router: Router,
     private postService: PostService,
     private authService: AuthService
-  ) {}
+  ) {
+    // this.checkIfFave()
+  }
 
   ngOnInit() {
     this.fileListLength = this.post.file.length;
-    this.configureDate();
-    //
     this.authService.signedin$.subscribe(
       (signedin) => (this.signedin = signedin)
     );
-    this.signedin = this.authService.isLoggedIn();
     this.checkIfFave();
   }
 
-  ngOnChanges(){
-    console.log('change')
-    this.checkIfFave()
-  }
 
   configureImagePath() {
     return `http://localhost:8081/${this.post.file[this.currentIndex].path}`;
@@ -65,6 +60,8 @@ export class PostComponent {
     return `${month}/${day}/${year.slice(2)}`;
   }
 
+// maybe a toast notification to confirm post added to favorites
+// bug: have to refresh to see newly added favorite post
   addToFave() {
     const userId = localStorage.getItem('user_id');
     if (userId) {
@@ -85,8 +82,9 @@ export class PostComponent {
     this.post.isFave = false
   }
 
-  // maybe a toast notification to confirm post added to favorites
+  // bug: this is taking too long
   checkIfFave() {
+    console.log('checkIfFave ran')
     if (this.signedin) {
       const userId = localStorage.getItem('user_id');
       this.postService.getFaves(userId).subscribe((res) => {
