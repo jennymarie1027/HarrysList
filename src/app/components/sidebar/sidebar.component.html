@@ -1,7 +1,18 @@
-<div id="sidebar">
+<!-- <div id="sidebar">
   <div class="categories">
-    <ng-container *ngFor="let cat of cats">
+    <ng-container *ngFor="let cat of categories">
       <p>{{cat.value}}</p>
     </ng-container>
+  </div>
+</div> -->
+
+<div id="sidebar">
+  <div class="categories">
+    <section class="example-section" [formGroup]="formattedCategories">
+      <h4>Select your cateogory:</h4>
+      <ng-container *ngFor="let cat of categories">
+        <p><mat-checkbox [formControlName]="cat.value">{{cat.value}}</mat-checkbox></p>
+      </ng-container>
+    </section>
   </div>
 </div>
