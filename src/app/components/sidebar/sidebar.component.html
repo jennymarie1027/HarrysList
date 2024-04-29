@@ -8,8 +8,9 @@
 
 <div id="sidebar">
   <div class="categories">
+    <p><mat-checkbox (click)="selectAllOrNothing()" [(ngModel)]="selectAllChecked" >Select All</mat-checkbox></p>
     <section class="example-section" [formGroup]="formattedCategories">
-      <h4>Select your cateogory:</h4>
+      <!-- <h4>Select your cateogory:</h4> -->
       <ng-container *ngFor="let cat of categories">
         <p><mat-checkbox [formControlName]="cat.value">{{cat.value}}</mat-checkbox></p>
       </ng-container>

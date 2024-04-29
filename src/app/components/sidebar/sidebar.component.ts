@@ -10,6 +10,7 @@ import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 export class SidebarComponent {
   categories = categories
   formattedCategories: any
+  selectAllChecked = false;
   constructor(private formBuilder: FormBuilder){}
 
   ngOnInit(){
@@ -23,12 +24,18 @@ export class SidebarComponent {
     })
     let form = {}
     for(let i = 0; i < justCategories.length; i++) {
-      form[justCategories[i]] = false
+      form[justCategories[i]] = true
     }
     console.log('form = ', form)
     return form;
   }
 
-  // this.categories = this.formBuilder.group(this.cats)
+  selectAllOrNothing(){
+    for(const prop in this.formattedCategories.value) {
+      this.formattedCategories.value[prop] = !this.formattedCategories.value[prop]
+      console.log(`${prop}: ${this.formattedCategories.value[prop]}`)
+    }
+    }
+  }
 
-}
+
