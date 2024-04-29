@@ -39,7 +39,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ProfileComponent } from './components/profile/profile.component';
 import { MatSelectModule } from '@angular/material/select';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -57,7 +57,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     PostComponent,
     PostEditComponent,
     ProfileComponent,
-    SidebarComponent
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,6 +81,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     MatSnackBarModule,
     MatProgressSpinnerModule,
     MatSelectModule,
+    MatCheckboxModule,
   ],
   providers: [
     {
