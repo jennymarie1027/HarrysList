@@ -15,3 +15,8 @@
 .spinner {
   margin: auto;
 }
+
+.container {
+  display: flex;
+  min-width: 100%;
+}
