@@ -14,28 +14,28 @@ export class SidebarComponent {
   constructor(private formBuilder: FormBuilder){}
 
   ngOnInit(){
-    let form = this.formatForm()
-    this.formattedCategories = this.formBuilder.group(form)
+    // let form = this.formatForm()
+    // this.formattedCategories = this.formBuilder.group(form)
+    console.log('categories =', categories)
   }
 
-  formatForm(){
-    let justCategories = this.categories.map((cat) => {
-      return cat.value
-    })
-    let form = {}
-    for(let i = 0; i < justCategories.length; i++) {
-      form[justCategories[i]] = true
-    }
-    console.log('form = ', form)
-    return form;
-  }
+  // formatForm(){
+  //   let justCategories = this.categories.map((cat) => {
+  //     return cat.value
+  //   })
+  //   let form = {}
+  //   for(let i = 0; i < justCategories.length; i++) {
+  //     form[justCategories[i]] = true
+  //   }
+  //   return form;
+  // }
 
   selectAllOrNothing(){
     for(const prop in this.formattedCategories.value) {
       this.formattedCategories.value[prop] = !this.formattedCategories.value[prop]
       console.log(`${prop}: ${this.formattedCategories.value[prop]}`)
     }
-    }
   }
+}
 
 
